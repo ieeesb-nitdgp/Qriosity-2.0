@@ -1,10 +1,13 @@
 {% extends 'base.html'%} {% load static %} {% block content %}
 <style>
-  h2 {
-    color: blanchedalmond;
+  #particles-js {
+    height: 100vh;
+    width: 100vw;
   }
   .container {
-    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .content {
@@ -12,6 +15,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .large {
+    font-size: 2em;
   }
 
   .listQ {
@@ -33,15 +40,15 @@
 
 <div class="content">
   {% if end %}
-  <p class="listQ">
+  <p class="large">
     Quiz Expired on {{end}}
   </p>
   {% else %}
-  <h2>
+  <h2 class="large">
     Quiz Live On
   </h2>
 
-  <p id="demo" class="listQ"></p>
+  <p id="demo" class="large"></p>
   {% endif %}
 </div>
 
@@ -77,6 +84,27 @@
   });
 
   console.log("Thanks For Participating");
+</script>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.min.js"
+  integrity="sha512-E1+SnTWyHYoY5MN8wpL0SI4TYbpWN12sHXyEViwbzzEyq6GHxQrPFDzEeUDab4emXcf3Yj41Tht2JZnpo3kjwA=="
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.18/vanta.clouds.min.js"
+  integrity="sha512-7y/n/64qkxINADOBu7lt+rLroZuVcmKLk6N83E5mqzAVy1LXnkjq7DK9BelQXCiDY+eXvdO3DM6sIFCNJCS6MQ=="
+  crossorigin="anonymous"
+></script>
+<script>
+  VANTA.CLOUDS({
+    el: "#particles-js",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.0,
+    minWidth: 200.0,
+  });
 </script>
 
 {% endblock %}
