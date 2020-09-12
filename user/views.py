@@ -29,7 +29,7 @@ def dashboard(request):
     return render(request, 'user/dashboard.html', {'player': player, "rank": j})
 
 
-#@login_required(login_url='/login', redirect_field_name=None)
+# @login_required(login_url='/login', redirect_field_name=None)
 def save_profile(backend, user, response, *args, **kwargs):
     if backend.name == 'google-oauth2':
         profile = user
@@ -65,7 +65,15 @@ def leaderboard(request):
     leader = models.Player.objects.order_by(
         '-score', 'last_submit')[:1]
     n = models.Player.objects.count()
-    return render(request, 'user/leaderboard.html', {'leaderboard': current_leaderboard, 'leader': leader, 'n': n})
+    print(type(current_leaderboard))
+
+    lst = []
+
+    for i in current_leaderboard:
+        if i.level2 == 0:
+            lst.append(i)
+
+    return render(request, 'user/leaderboard.html', {'leaderboard': lst, 'leader': leader, 'n': n})
 
 
 def privacy_policy_fb(request):
