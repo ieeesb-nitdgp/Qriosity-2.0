@@ -70,7 +70,7 @@ def leaderboard(request):
     lst = []
 
     for i in current_leaderboard:
-        if i.level2 == 0:
+        if i.level2 > -1:
             lst.append(i)
 
     return render(request, 'user/leaderboard.html', {'leaderboard': lst, 'leader': leader, 'n': n})
