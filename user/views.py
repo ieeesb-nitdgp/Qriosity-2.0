@@ -65,7 +65,7 @@ def leaderboard(request):
     leader = models.Player.objects.order_by(
         '-score', 'last_submit')[:1]
     n = models.Player.objects.count()
-    print(type(current_leaderboard))
+    # print(type(current_leaderboard))
 
     lst = []
 
